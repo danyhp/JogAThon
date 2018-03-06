@@ -94,11 +94,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void counting_lap(View view) {
-        mCount++;
-        if (lap != null)
-            lap.setText(Integer.toString(mCount));
-    }
+//    public void counting_lap(View view) {
+//        lap = findViewById(R.id.lapPeserta);
+//        mCount++;
+//        if (lap != null)
+//            lap.setText(Integer.toString(mCount));
+//    }
 
     public void addRunner() {
 

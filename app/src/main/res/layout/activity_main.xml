@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/appBarLayout2"
+            android:layout_marginLeft="10sp"
             android:text="@string/no_peserta_title"
             android:textAppearance="@style/AppTheme"
             android:textSize="10pt" />
@@ -41,24 +42,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/appBarLayout2"
-            android:layout_marginEnd="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_toLeftOf="@+id/countLap_title"
-            android:layout_toStartOf="@+id/countLap_title"
+            android:layout_centerHorizontal="true"
             android:text="@string/lap_count_title"
             android:textAppearance="@style/AppTheme"
             android:textSize="10pt" />
 
         <TextView
             android:id="@+id/countLap_title"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/appBarLayout2"
-            android:layout_marginEnd="2sp"
-            android:layout_marginRight="2sp"
-            android:text="Count UP"
+            android:layout_marginRight="10sp"
+            android:text="@string/count_up_title"
             android:textAppearance="@style/AppTheme"
             android:textSize="10pt" />
 
@@ -66,9 +63,8 @@
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/noPeserta_title">
+            android:layout_below="@id/noPeserta_title"
+            android:paddingBottom="50dp">
 
         </android.support.v7.widget.RecyclerView>
 

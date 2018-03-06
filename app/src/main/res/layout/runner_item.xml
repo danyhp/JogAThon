@@ -28,28 +28,26 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/no_peserta"
                 android:textAppearance="@style/AppTheme"
-                android:textSize="15pt" />
+                android:textSize="@dimen/text_size_display" />
 
             <TextView
                 android:id="@+id/lapPeserta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/countLap"
-                android:layout_toStartOf="@id/countLap"
                 android:text="@string/number_count"
                 android:textAppearance="@style/AppTheme"
-                android:textSize="@dimen/font_size" />
+                android:textSize="@dimen/text_size_display" />
 
             <ImageButton
                 android:id="@+id/countLap"
                 style="@style/PlusButtons"
                 android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:layout_alignParentEnd="true"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:onClick="counting_lap"
+                android:layout_marginRight="50dp"
                 android:src="@drawable/ic_plus" />
         </RelativeLayout>
 
