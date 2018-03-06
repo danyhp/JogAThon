@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:padding="5sp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="alexgochi.jogathon.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/noPeserta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:text="@string/no_peserta"
+                android:textAppearance="@style/AppTheme"
+                android:textSize="15pt" />
+
+            <TextView
+                android:id="@+id/lapPeserta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/countLap"
+                android:layout_toStartOf="@id/countLap"
+                android:text="@string/number_count"
+                android:textAppearance="@style/AppTheme"
+                android:textSize="@dimen/font_size" />
+
+            <ImageButton
+                android:id="@+id/countLap"
+                style="@style/PlusButtons"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:onClick="counting_lap"
+                android:src="@drawable/ic_plus" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
