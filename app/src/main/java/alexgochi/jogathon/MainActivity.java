@@ -1,7 +1,6 @@
 package alexgochi.jogathon;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -18,24 +17,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private int mCount = 0;
     private TextView lap;
     private RecyclerView mRecyclerView;
     private RVAdapter mAdapter;
-    List<Runner> runners;
+    ArrayList<Runner> runners = new ArrayList<>();
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        addRunner();
+        if (savedInstanceState != null) {
+            runners = savedInstanceState.getParcelableArrayList("key");
+
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        initializeData();
+//        initializeData();
 
         // Get a handle to RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.rv);
@@ -57,19 +63,13 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-//        rv.setHasFixedSize(true);
-//        LinearLayoutManager llm = new LinearLayoutManager(this);
-//        rv.setAdapter(adapter);
-
     }
 
-
-    private void initializeData() {
-        runners = new ArrayList<>();
-
-        runners.add(new Runner(2009, 10000));
-        runners.add(new Runner(2209, 20000));
-        runners.add(new Runner(2309, 34400));
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Save the runner data
+        outState.putParcelableArrayList("key", runners);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -94,15 +94,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    public void counting_lap(View view) {
-//        lap = findViewById(R.id.lapPeserta);
-//        mCount++;
-//        if (lap != null)
-//            lap.setText(Integer.toString(mCount));
-//    }
-
     public void addRunner() {
-
 
         // Get the layout inflater
         LayoutInflater inflater = MainActivity.this.getLayoutInflater();
@@ -116,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        int runnerListSize = runners.size();
+
 
                         EditText mRunnerId = dialogLayout.findViewById(R.id.id_runner);
                         EditText mDonation = dialogLayout.findViewById(R.id.donation);
@@ -132,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                         //	Notify	the	adapter,	that	the	data	has	changed	so	it	can
                         //	update	the	RecyclerView	to	display	the	data.
+                        int runnerListSize = runners.size();
                         mRecyclerView.getAdapter().notifyItemInserted(runnerListSize);
                         //	Scroll	to	the	bottom.
                         mRecyclerView.smoothScrollToPosition(runnerListSize);
@@ -143,5 +136,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         builder.show();
+    }
+
+    private void initializeData() {
+//        runners = new ArrayList<>();
+
+        runners.add(new Runner(2009, 10000));
+        runners.add(new Runner(2209, 20000));
+        runners.add(new Runner(2309, 34400));
     }
 }

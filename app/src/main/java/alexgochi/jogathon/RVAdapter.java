@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by ASUS on 06-Mar-18.
@@ -19,12 +19,12 @@ import java.util.List;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RunnerViewHolder> {
 
 
-    private final List<Runner> runners;
+    private final ArrayList<Runner> runners;
     private LayoutInflater mInflater;
 
     // Constructor
 
-    public RVAdapter(Context context, List<Runner> runners) {
+    public RVAdapter(Context context, ArrayList<Runner> runners) {
         this.runners = runners;
         this.mInflater = LayoutInflater.from(context);
     }
@@ -32,11 +32,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RunnerViewHolder> 
     class RunnerViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         public final TextView runnerID;
-        // TextView lapDonation;
         public final TextView lapCount;
         public final ImageButton counter;
-        RVAdapter mAdapter;
-        public int mLapCount;
 
 
         public RunnerViewHolder(View itemView) {
@@ -45,9 +42,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RunnerViewHolder> 
             runnerID = (TextView) itemView.findViewById(R.id.noPeserta);
             lapCount = (TextView) itemView.findViewById(R.id.lapPeserta);
             counter = (ImageButton) itemView.findViewById(R.id.countLap);
-
-//            this.mAdapter = adapter;
-
         }
 
     }
@@ -79,6 +73,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RunnerViewHolder> 
 
     @Override
     public int getItemCount() {
-        return runners.size();
+        if (runners != null) {
+            return runners.size();
+        } else {
+            return 0;
+        }
     }
 }
