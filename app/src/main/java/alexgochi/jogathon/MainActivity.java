@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             runners = savedInstanceState.getParcelableArrayList("key");
-
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
